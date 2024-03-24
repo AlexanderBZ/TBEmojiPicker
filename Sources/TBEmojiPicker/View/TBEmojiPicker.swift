@@ -78,7 +78,7 @@ public struct TBEmojiPicker: View {
                             }
                         }
                     }
-                    .frame(width: geometry.size.width * 0.9)
+                    .frame(width: UIScreen.main.bounds.width * 0.9)
                 }
             }
             // Bottom Navigation
