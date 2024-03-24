@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-public struct TBEmojiPicker : View {
+public struct TBEmojiPicker: View {
+    @Environment(\.presentationMode) var presentationMode
     @Binding var selectedEmoji: String
     @State private var searchQuery: String = ""
     private var emojis: [Emoji] = EmojiItem.shared.emojiAll
@@ -58,7 +59,10 @@ public struct TBEmojiPicker : View {
                         Section {
                             if !emojis.isEmpty {
                                 ForEach(emojis, id: \.self) { emoji in
-                                    Button(action: {selectedEmoji = emoji.string}) {
+                                    Button(action: {
+                                        selectedEmoji = emoji.string
+                                        presentationMode.wrappedValue.dismiss()
+                                    }) {
                                         Text(emoji.string)
                                             .emojiStyle()
                                             .overlay(
@@ -74,6 +78,7 @@ public struct TBEmojiPicker : View {
                             }
                         }
                     }
+                    .frame(width: geometry.size.width * 0.9)
                 }
             }
             // Bottom Navigation
