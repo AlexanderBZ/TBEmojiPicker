@@ -78,8 +78,8 @@ public struct TBEmojiPicker: View {
                             }
                         }
                     }
-                    .frame(width: UIScreen.main.bounds.width * 0.9)
                 }
+                .padding(.horizontal, 25)
             }
             // Bottom Navigation
             BottomNavigationView(scrollValue: scrollValue, bottomNavBar: bottomNavBar)
