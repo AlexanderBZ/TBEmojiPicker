@@ -12,10 +12,6 @@ struct EmojiItem {
     private (set) var emojiAll: [Emoji] = []
     
     init() {
-        loadEmojis()
-    }
-
-    func loadEmojis() {
         do {
             emojiAll = try decodeEmojis(at: "emoji")
         } catch {
@@ -23,7 +19,7 @@ struct EmojiItem {
         }
     }
     
-    func decodeEmojis(at resource: String) throws -> [Emoji] {
+    private func decodeEmojis(at resource: String) throws -> [Emoji] {
         if let url = Bundle.module.url(forResource: resource, withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
